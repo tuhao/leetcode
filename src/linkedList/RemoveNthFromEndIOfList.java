@@ -17,12 +17,11 @@ public class RemoveNthFromEndIOfList {
         dummy.next = head;
         ListNode first = dummy;
         ListNode second = dummy;
-        for (int i = 0; i < n; i++) {
+        // Advances first pointer so that the gap between first and second is n nodes apart
+        for (int i = 1; i <= n + 1; i++) {
             first = first.next;
-            if (first == null) {
-                return dummy.next;
-            }
         }
+        // Move first to the end, maintaining the gap
         while (first != null) {
             first = first.next;
             second = second.next;
@@ -54,7 +53,7 @@ public class RemoveNthFromEndIOfList {
         ListNode listNode = new ListNode(1);
         ListNode result = new RemoveNthFromEndIOfList().removeNthFromEnd(listNode, 1);
         while (result != null) {
-            System.out.println(result);
+            System.out.println(result.val);
             result = result.next;
         }
     }

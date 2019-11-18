@@ -18,10 +18,10 @@ public class ReverseLinkedList {
         ListNode curr = head;
         ListNode prev = null;
         while (curr != null) {
-            ListNode nextTemp = curr.next;
+            ListNode tempNext = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = nextTemp;
+            curr = tempNext;
         }
         return prev;
     }
@@ -40,7 +40,7 @@ public class ReverseLinkedList {
         listNode.next.next = new ListNode(3);
         listNode.next.next.next = new ListNode(4);
         listNode.next.next.next.next = new ListNode(5);
-        ListNode reverse = new ReverseLinkedList().recursivelyReverseList(listNode);
+        ListNode reverse = new ReverseLinkedList().reverseList(listNode);
         while (reverse != null) {
             System.out.println(reverse.val);
             reverse = reverse.next;

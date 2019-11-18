@@ -1,5 +1,6 @@
 package linkedList;
 
+
 public class MergeLinkedList {
 
     public static class ListNode {
@@ -15,7 +16,7 @@ public class MergeLinkedList {
         ListNode preHead = new ListNode(-1);
         ListNode prev = preHead;
         while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
+            if (l1.val <= l2.val) {
                 prev.next = l1;
                 l1 = l1.next;
             } else {
