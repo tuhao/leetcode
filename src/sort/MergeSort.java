@@ -21,25 +21,25 @@ public class MergeSort {
         int i = p;
         int j = q + 1;
         int k = 0;
-        int[] temp = new int[r - p + 1];
+        int[] tmp = new int[r - p + 1];
         while (i <= q && j <= r) {
-            if (array[i] >= array[j]) {
-                temp[k++] = array[i++];
+            if (array[i] <= array[j]) {
+                tmp[k++] = array[i++];
             } else {
-                temp[k++] = array[j++];
+                tmp[k++] = array[j++];
             }
         }
         int start = i;
-        int end = j;
+        int end = q;
         if (j <= r) {
             start = j;
             end = r;
         }
         while (start <= end) {
-            temp[k++] = array[start++];
+            tmp[k++] = array[start++];
         }
-        for (i = 0; i < r - p; ++i) {
-            array[p + i] = temp[i];
+        for (i = 0; i <= r - p; i++) {
+            array[p + i] = tmp[i];
         }
     }
 }
