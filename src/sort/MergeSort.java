@@ -2,28 +2,44 @@ package sort;
 
 public class MergeSort {
 
-    private void mergeSort(int array[], int start, int end) {
-        if (start > end) {
-            int mid = start + end / 2;
-            mergeSort(array, start, mid);
-            mergeSort(array, mid + 1, end);
-            mergeSort(array, start, mid, end);
-        }
+    //递推公式： merge_sort(p...r)=merge(merge_sort(p...q),merge_sort(q+1...r))
+    //终止条件：p>=r不用继续分解
+
+    private void mergeSort(int[] array, int n) {
+        mergeSort(array, 0, n - 1);
     }
 
-    private void mergeSort(int[] array, int start, int mid, int end) {
-        int p1 = 0, p2 = mid, p = 0;
-        int[] tempArray = new int[end - start + 1];
-        while (p1 <= mid && p2 <= end) {
-            if (array[p1] <= array[p2]) {
-                tempArray[p++] = array[p1++];
+    private void mergeSort(int[] array, int p, int r) {
+        if (p >= r) return;
+        int q = p + (r - p) / 2;
+        mergeSort(array, p, q);
+        mergeSort(array, q + 1, r);
+        merge(array, p, q, r);
+    }
+
+    private void merge(int[] array, int p, int q, int r) {
+        int i = p;
+        int j = q + 1;
+        int k = 0;
+        int[] temp = new int[r - p + 1];
+        while (i <= q && j <= r) {
+            if (array[i] >= array[j]) {
+                temp[k++] = array[i++];
             } else {
-                tempArray[p++] = array[p2++];
+                temp[k++] = array[j++];
             }
         }
-
-        for (int i = 0; i < tempArray.length; i++) {
-            array[i] = tempArray[i];
+        int start = i;
+        int end = j;
+        if (j <= r) {
+            start = j;
+            end = r;
+        }
+        while (start <= end) {
+            temp[k++] = array[start++];
+        }
+        for (i = 0; i < r - p; ++i) {
+            array[p + i] = temp[i];
         }
     }
 }
