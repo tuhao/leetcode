@@ -21,7 +21,8 @@ public class Heap {
         a[count] = data;
         int i = count;
         while (i / 2 > 0 && a[i] > a[i / 2]) {
-            swap(a, i, i / 2);
+            swap(a, a[i], a[i / 2]);
+            i = i / 2;
         }
     }
 
@@ -39,11 +40,12 @@ public class Heap {
         }
     }
 
-    private void heapify(int[] a, int count, int i) {
+    private void heapify(int[] a, int n, int i) {
         while (true) {
             int maxPos = i;
             if (2 * i <= n && a[i] < a[i * 2]) maxPos = 2 * i;
-            if (2 * i + 1 <= n && a[maxPos] < a[2 * i + 1]) maxPos = 2 * i + 1;
+            if (2 * i + 1 <= n && a[maxPos] < a[i * 2 + 1]) maxPos = 2 * i + 1;
+            swap(a, i, maxPos);
             if (maxPos == i) break;
             i = maxPos;
         }

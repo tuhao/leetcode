@@ -38,7 +38,7 @@ public class MergeSort {
         while (start <= end) {
             tmp[k++] = array[start++];
         }
-        for (i = 0; i <= r - p; i++) {
+        for (i = 0; i <= r - p + 1; i++) {
             array[p + i] = tmp[i];
         }
     }
