@@ -55,6 +55,7 @@ public class MinCoins {
     }
 
     public static void main(String[] args) {
+        System.out.println(minCoins(999));
         System.out.println(minCoin(999));
     }
 }

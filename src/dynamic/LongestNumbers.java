@@ -14,7 +14,7 @@ package dynamic;
 
 import java.util.Arrays;
 
-//我们有一个数字序列包含 n 个不同的数字，
+// 我们有一个数字序列包含 n 个不同的数字，
 // 如何求出这个序列中的最长递增子序列长度？
 // 比如 2, 9, 3, 6, 5, 1, 7 这样一组数字序列，
 // 它的最长递增子序列就是 2, 3, 5, 7，所以最长递增子序列的长度是 4。
@@ -26,7 +26,7 @@ public class LongestNumbers {
         return max;
     }
 
-    //  回溯解法
+    // 回溯解法
     public int bt(int[] a, int prev, int i) {
         if (i == a.length) return 0;
         int taken = 0;
@@ -37,6 +37,7 @@ public class LongestNumbers {
         return Math.max(taken, noTaken);
     }
 
+    // dp[i]=max(dp[j]+1,dp[i])
     public int longest(int[] a) {
         if (a.length == 0) return 0;
         int[] dp = new int[a.length];
@@ -51,6 +52,7 @@ public class LongestNumbers {
         return res;
     }
 
+
     public static void main(String[] args) {
         int[] a = {2, 9, 3, 6, 5, 1, 7};
         int longest;
@@ -60,5 +62,7 @@ public class LongestNumbers {
 
         longest = longestNumbers.bt(a, Integer.MIN_VALUE, 0);
         System.out.println(longest);
+
+
     }
 }
